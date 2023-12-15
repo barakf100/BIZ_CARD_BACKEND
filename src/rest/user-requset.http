@@ -1,0 +1,44 @@
+### GET All Users
+GET http://localhost:8080/api/v1/users
+
+### Add a user:
+POST http://localhost:8080/api/v1/users/
+Content-Type: application/json
+
+{
+"name": {
+    "first": "Bruce",
+    "last": "Wayne"
+},
+"address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "country": "Israel",
+    "houseNumber": 20,
+    "Zip": "12345"
+},
+"image": {
+    "alt": "user-profile",
+    "src": "https://picsum.photos/200/300"
+},
+"phone": "050-8123091",
+"email": "Waine@batcave.com",
+    "isBusiness": true,
+    "password": "123456aA!"
+}
+
+### LOGIN
+POST http://localhost:8080/api/v1/users/login
+Content-Type: application/json
+
+{
+    "email": "Waine@batcave.com",
+    "password": "123456aA!"
+}
+
+### put request
+PUT http://localhost:8080/api/v1/users/65774c1d76471cf1eb80f6ee
+
+### delete request
+DELETE http://localhost:8080/api/v1/users/615
+
