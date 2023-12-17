@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema, Types } from "mongoose";
 import { ICard } from "../../@types/card";
 import { addressSchema } from "./address-schema";
 import { imageSchema } from "./image-schema";
@@ -19,6 +19,7 @@ const cardSchema = new Schema<ICard>({
             src: "https://cdn.pixabay.com/photo/2016/02/13/12/26/aurora-1197753_1280.jpg",
         },
     },
+    userId: { type: "String", required: false },
 });
 
 export { cardSchema };

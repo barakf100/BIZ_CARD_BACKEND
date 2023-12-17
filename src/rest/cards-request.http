@@ -7,11 +7,12 @@ GET http://localhost:8080/api/v1/cards/657ab6207fefb79abaf1b4f7
 
 ### new card
 
-POST http://localhost:8080/api/v1/cards
+POST http://localhost:8080/api/v1/cards/657f1792f9b52a9696a45715
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDI4MzEwNDl9.vf1KqXD7E4lIlHC2C3c6i47N7325BsisetWDtA-PHyE
 Content-Type: application/json
 
 {
-    "title": "new card",
+    "title": "new card!!!",
     "subtitle": "new card ",
     "description": "new card description",
     "phone": "050-1234567",

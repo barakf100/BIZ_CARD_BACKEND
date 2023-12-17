@@ -3,6 +3,7 @@ import { ICard } from "../@types/card";
 import { Card } from "../database/model/card";
 import { validateCard } from "../middleware/validation";
 import { createCard } from "../service/card-service";
+import { isBusiness } from "../middleware/is-Business";
 
 const router = express.Router();
 
@@ -25,11 +26,10 @@ router.get("/:id", async (req, res) => {
 });
 
 // POST /cards
-router.post("/", validateCard, async (req, res) => {
+router.post("/:id", isBusiness, validateCard, async (req, res) => {
     try {
-        //TODO: check if user in business
-        const saved = await createCard(req.body as ICard);
-        res.status(201).json({ message: "card saved", card: saved });
+        const newCard = await createCard(req.body as ICard, req.params.id);
+        res.status(201).json({ message: "card saved", card: newCard });
     } catch (err) {
         res.status(400).json({ message: "Error saving card", err });
     }
