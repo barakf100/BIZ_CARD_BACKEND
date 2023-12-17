@@ -9,6 +9,8 @@ type ICard = {
     web: string;
     image?: IImage;
     address: IAddress;
+    _id?: string;
+    userId: string; //TODO:this
 };
 
 export { ICard };

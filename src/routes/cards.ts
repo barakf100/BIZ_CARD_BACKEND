@@ -1,7 +1,7 @@
 import express from "express";
 import { ICard } from "../@types/card";
 import { Card } from "../database/model/card";
-import { validateCard } from "../middleware/validaition";
+import { validateCard } from "../middleware/validation";
 import { createCard } from "../service/card-service";
 
 const router = express.Router();
