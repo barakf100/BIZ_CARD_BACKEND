@@ -20,6 +20,7 @@ const cardSchema = new Schema<ICard>({
         },
     },
     userId: { type: "String", required: false },
+    likes: { type: [String], required: false, default: [] },
 });
 
 export { cardSchema };

@@ -12,6 +12,7 @@ type ICard = {
     address: IAddress;
     _id?: string;
     userId: string;
+    likes: Array<string>;
 };
 
 export { ICard };

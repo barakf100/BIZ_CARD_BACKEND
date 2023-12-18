@@ -4,10 +4,10 @@ import { Card } from "../database/model/card";
 import { validateCard } from "../middleware/validation";
 import { createCard, findOwnerCards } from "../service/card-service";
 import { isBusiness } from "../middleware/is-Business";
-import { extractToken } from "../middleware/is-admin";
 import { getUserByJWT } from "../service/user-service";
-import { isCardOwner } from "../middleware/is-card-owener";
+import { isCardOwner } from "../middleware/is-card-owner";
 import { isCardOwnerOrAdmin } from "../middleware/is-card-owner-or-admin";
+import { authIsUser, isUser } from "../middleware/is_user";
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-// get my cards - login user
+// get my cards - logged in user
 router.get("/my-cards", async (req, res) => {
     try {
         const userId = await getUserByJWT(req);
@@ -40,7 +40,7 @@ router.get("/:id", async (req, res) => {
     res.status(200).json(card);
 });
 
-// post new card - business
+// post new card - business account
 router.post("/:id", isBusiness, validateCard, async (req, res) => {
     try {
         const newCard = await createCard(req.body as ICard, req.params.id);
@@ -50,7 +50,7 @@ router.post("/:id", isBusiness, validateCard, async (req, res) => {
     }
 });
 
-// PUT card by id - login user who created the card
+// PUT card by id - logged in user who created the card
 router.put("/:id", isCardOwner, async (req, res) => {
     try {
         const { id } = req.params;
@@ -62,10 +62,13 @@ router.put("/:id", isCardOwner, async (req, res) => {
     }
 });
 
-// like a card - login user
-router.patch("/:id", async (req, res) => {});
+// like a card - logged in user
+router.patch("/:id", authIsUser, async (req, res) => {
+    const likeCard = await Card.findByIdAndUpdate(req.params.id, { $push: { likes: req.user._id } }, { new: true });
+    res.send(likeCard);
+});
 
-// DELETE card - login user who created the card or admin
+// DELETE card - logged in user who created the card or admin
 router.delete("/:id", isCardOwnerOrAdmin, async (req, res) => {
     try {
         const { id } = req.params;

@@ -49,6 +49,11 @@ Content-Type: application/json
         }
     }
 
+### like a card
+PATCH http://localhost:8080/api/v1/cards/65806b0c00e2c5aca9485d56
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDI5MTUwMTJ9.21J6-aOyGox2csjGIMgWTmHOqTbU7qmFFqWOODRt56s
+
+
 ### delete card by id
-DELETE http://localhost:8080/api/v1/cards/65803bee7cc6f1a7b33a8e14
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMjkxNDE3N30.mp7b1XtgOP5qOJq48zy8VTcAY31k9-f9eRrE3qhrEIs
+DELETE http://localhost:8080/api/v1/cards/6580797b7fadebcfbddbe13c
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMjkxODU2NH0.fcc3orhbR7J4XfkeyhD7kDKoD9skhGuNDfYa1VzPxXk

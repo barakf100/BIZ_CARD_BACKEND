@@ -4,6 +4,7 @@ import { auth } from "../service/auth-service";
 import { User } from "../database/model/user";
 import { extractToken } from "./is-admin";
 import { IUser } from "../@types/user";
+import { getUserByJWT } from "../service/user-service";
 
 const isUser: RequestHandler = async (req, res, next) => {
     try {
@@ -20,5 +21,15 @@ const isUser: RequestHandler = async (req, res, next) => {
         next(err);
     }
 };
+const authIsUser: RequestHandler = async (req, res, next) => {
+    try {
+        const user = await getUserByJWT(req);
+        if (!user) throw new BizCardsError("user not found", 401);
+        req.user = user;
+        next();
+    } catch (err) {
+        next(err);
+    }
+};
 
-export { isUser };
+export { isUser, authIsUser };
