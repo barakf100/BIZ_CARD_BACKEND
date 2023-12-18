@@ -6,5 +6,8 @@ const createCard = async (cardData: ICard, id: string) => {
     card.userId = id;
     return card.save();
 };
-
-export { createCard };
+const findOwnerCards = async (id: string) => {
+    const { userId } = await Card.findById(id);
+    return userId;
+};
+export { createCard, findOwnerCards };

@@ -2,12 +2,16 @@ import express from "express";
 import { ICard } from "../@types/card";
 import { Card } from "../database/model/card";
 import { validateCard } from "../middleware/validation";
-import { createCard } from "../service/card-service";
+import { createCard, findOwnerCards } from "../service/card-service";
 import { isBusiness } from "../middleware/is-Business";
+import { extractToken } from "../middleware/is-admin";
+import { getUserByJWT } from "../service/user-service";
+import { isCardOwner } from "../middleware/is-card-owener";
+import { isCardOwnerOrAdmin } from "../middleware/is-card-owner-or-admin";
 
 const router = express.Router();
 
-// GET /cards
+// get all cards - everyone
 router.get("/", async (req, res) => {
     try {
         const allCards = await Card.find();
@@ -17,7 +21,18 @@ router.get("/", async (req, res) => {
     }
 });
 
-// GET /cards/:id
+// get my cards - login user
+router.get("/my-cards", async (req, res) => {
+    try {
+        const userId = await getUserByJWT(req);
+        const cards = await findOwnerCards(userId);
+        res.json(cards);
+    } catch (err) {
+        res.status(500).json({ message: "server error", err });
+    }
+});
+
+// GET card by id - everyone
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
     const card = await Card.findById(id);
@@ -25,7 +40,7 @@ router.get("/:id", async (req, res) => {
     res.status(200).json(card);
 });
 
-// POST /cards
+// post new card - business
 router.post("/:id", isBusiness, validateCard, async (req, res) => {
     try {
         const newCard = await createCard(req.body as ICard, req.params.id);
@@ -35,22 +50,23 @@ router.post("/:id", isBusiness, validateCard, async (req, res) => {
     }
 });
 
-// PUT /cards/:id
-router.put("/:id", async (req, res) => {
+// PUT card by id - login user who created the card
+router.put("/:id", isCardOwner, async (req, res) => {
     try {
         const { id } = req.params;
-        const update = await Card.findByIdAndUpdate(id, req.body);
+        const update = await Card.findByIdAndUpdate(id, req.body, { new: true });
         if (!update) return res.status(404).json({ message: "Card not found" });
         res.status(200).json({ message: "card updated", update });
-        res.send(`Update card with ID ${id}`);
     } catch (err) {
         res.status(400).json({ message: "Error updating card", err });
     }
 });
 
-// DELETE /cards/:id
-router.delete("/:id", async (req, res) => {
-    // TODO: handle delete only by owner
+// like a card - login user
+router.patch("/:id", async (req, res) => {});
+
+// DELETE card - login user who created the card or admin
+router.delete("/:id", isCardOwnerOrAdmin, async (req, res) => {
     try {
         const { id } = req.params;
         const del = await Card.findByIdAndDelete(id);

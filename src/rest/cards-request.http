@@ -1,18 +1,20 @@
 ### get all cards
-
 GET http://localhost:8080/api/v1/cards
+
+### get my cards
+GET http://localhost:8080/api/v1/cards/my-cards
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDI4OTIwNDd9.wPJtkNnHjjL9rWtuvO36ibvhpwqpgfGrYZWjdngqceE
 
 ### get card by id
 GET http://localhost:8080/api/v1/cards/657ab6207fefb79abaf1b4f7
 
 ### new card
-
 POST http://localhost:8080/api/v1/cards/657f1792f9b52a9696a45715
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDI4MzEwNDl9.vf1KqXD7E4lIlHC2C3c6i47N7325BsisetWDtA-PHyE
 Content-Type: application/json
 
 {
-    "title": "new card!!!",
+    "title": "new card!!",
     "subtitle": "new card ",
     "description": "new card description",
     "phone": "050-1234567",
@@ -28,11 +30,12 @@ Content-Type: application/json
 }
 
 ### update card by id
-PUT http://localhost:8080/api/v1/cards/657af026591396cae8a17412
+PUT http://localhost:8080/api/v1/cards/657f256df42b7241576aaff6
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDI5MDQ3MTl9.cBH7NxlJJLE2-wKASuGawakPsWVMb_hf7Ah7TkZ2W-U
 Content-Type: application/json
 
 {
-    "title": "new card",
+    "title": "new card-new!!",
     "subtitle": "new card ",
     "description": "new card description",
     "phone": "050-2345678",
@@ -47,4 +50,5 @@ Content-Type: application/json
     }
 
 ### delete card by id
-DELETE http://localhost:8080/api/v1/cards/657ab6207fefb79abaf1b4f7
+DELETE http://localhost:8080/api/v1/cards/65803bee7cc6f1a7b33a8e14
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMjkxNDE3N30.mp7b1XtgOP5qOJq48zy8VTcAY31k9-f9eRrE3qhrEIs

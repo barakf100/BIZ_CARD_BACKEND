@@ -11,7 +11,7 @@ type ICard = {
     image?: IImage;
     address: IAddress;
     _id?: string;
-    userId: string; //TODO:this
+    userId: string;
 };
 
 export { ICard };

@@ -2,6 +2,8 @@ import { IUser } from "../@types/user";
 import { User } from "../database/model/user";
 import { auth } from "./auth-service";
 import { BizCardsError } from "../error/biz-cards-error";
+import { Request } from "express";
+import { extractToken } from "../middleware/is-admin";
 
 const createUser = async (userData: IUser) => {
     const user = new User(userData);
@@ -20,4 +22,11 @@ const validateUser = async (email: string, password: string) => {
     return { jwt };
 };
 
-export { createUser, validateUser };
+const getUserByJWT = async (req: Request) => {
+    const JWT = extractToken(req);
+    const { email } = auth.verifyJWT(JWT);
+    const { _id } = await User.findOne({ email });
+    return _id;
+};
+
+export { createUser, validateUser, getUserByJWT };
