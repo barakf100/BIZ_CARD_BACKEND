@@ -7,6 +7,7 @@ import { isAdmin } from "../middleware/is-admin";
 import { isAdminOrUser } from "../middleware/is-admin-or-user";
 import { isUser } from "../middleware/is_user";
 import { auth } from "../service/auth-service";
+import { BizCardsError } from "../error/biz-cards-error";
 
 const router = Router();
 
@@ -54,22 +55,30 @@ router.get("/:id", isAdminOrUser, async (req, res, next) => {
 
 // user update himself
 router.put("/:id", isUser, validateRegistration, async (req, res, next) => {
-    req.body.password = await auth.hashPassword(req.body.password);
-    const saved = await User.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true });
-    res.json(saved);
+    try {
+        req.body.password = await auth.hashPassword(req.body.password);
+        const saved = await User.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true });
+        res.json(saved);
+    } catch (err) {
+        next(err);
+    }
 });
 
 // user update is business
 router.patch("/:id", isUser, async (req, res, next) => {
-    const { isBusiness, ...otherFields } = req.body;
-    if (Object.keys(otherFields).length > 0) {
-        return res.status(400).json({ message: "Only the isBusiness field can be updated." });
+    try {
+        const { isBusiness, ...otherFields } = req.body;
+        if (Object.keys(otherFields).length > 0) {
+            throw new BizCardsError("Only the isBusiness field can be updated.", 400);
+        }
+        if (typeof isBusiness != "boolean") {
+            throw new BizCardsError("isBusiness field must be Boolean.", 400);
+        }
+        const update = await User.findByIdAndUpdate({ _id: req.params.id }, { isBusiness }, { new: true });
+        res.json(update);
+    } catch (err) {
+        next(err);
     }
-    if (isBusiness === undefined) {
-        return res.status(400).json({ message: "isBusiness field is required." });
-    }
-    const update = await User.findByIdAndUpdate({ _id: req.params.id }, { isBusiness }, { new: true });
-    res.json(update);
 });
 
 // admin delete any user , user delete himself

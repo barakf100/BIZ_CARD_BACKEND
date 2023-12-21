@@ -8,7 +8,6 @@ import { getUserByJWT } from "../service/user-service";
 import { isCardOwner } from "../middleware/is-card-owner";
 import { isCardOwnerOrAdmin } from "../middleware/is-card-owner-or-admin";
 import { authIsUser, isUser } from "../middleware/is_user";
-import e from "express";
 
 const router = express.Router();
 

@@ -7,11 +7,11 @@ class Logger {
 
     static info(...messages: any[]) {
         if (process.env.NODE_ENV === "prod") return;
-        console.error(chalk.yellow(messages));
+        console.error(chalk.blue(messages));
     }
 
     static debug(...messages: any[]) {
-        console.debug(chalk.blue(messages));
+        console.debug(chalk.yellow(messages));
     }
 
     static verbose(...messages: any[]) {
