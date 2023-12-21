@@ -10,6 +10,7 @@ const isBusiness: RequestHandler = async (req, res, next) => {
 
     const user = await User.findOne({ email });
     const isBusiness = user?.isBusiness;
+    req.user = user;
     if (isBusiness) {
         next();
     } else {

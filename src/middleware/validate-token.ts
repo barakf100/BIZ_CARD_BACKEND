@@ -14,7 +14,7 @@ const extractToken = (req: Request) => {
 const validateToken: RequestHandler = (req, res, next) => {
     const token = extractToken(req);
     const { email } = auth.verifyJWT(token);
-    req.user = { email };
+    req.user = { email }; // TODO: fix this
     next();
 };
 

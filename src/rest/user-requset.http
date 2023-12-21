@@ -1,9 +1,3 @@
-### GET All Users
-GET http://localhost:8080/api/v1/users
-Authorization: bearer {token}
-
-
-
 ### Add a user:
 POST http://localhost:8080/api/v1/users/
 Content-Type: application/json
@@ -30,75 +24,5 @@ Content-Type: application/json
     "password": "Aa!123456"
 }
 
-### LOGIN
-POST http://localhost:8080/api/v1/users/login
-Content-Type: application/json
-
-{
-    "email": "admin@admin.com",
-    "password": "Aa!123456"
-}
-
-### LOGIN
-POST http://localhost:8080/api/v1/users/login
-Content-Type: application/json
-
-{
-    "email": "buis@buis.com",
-    "password": "Aa!123456"
-}
-
-### LOGIN
-POST http://localhost:8080/api/v1/users/login
-Content-Type: application/json
-
-{
-    "email": "reg@reg.com",
-    "password": "Aa!123456"
-}
 
 
-### put request
-PUT http://localhost:8080/api/v1/users/65799750af1dafb2c051db7b
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IldhaW5lQGJhdGNhdmUuY29tIiwiaWF0IjoxNzAyODAwNzEzfQ.Lru93t22oCQ6pcotM8dDXXql0essaBZQ4pYQBeXMeAU
-Content-Type: application/json
-
-{
-"name": {
-    "first": "Bruce!!!!",
-    "last": "Wayne"
-},
-"address": {
-    "street": "123 Main St",
-    "city": "Anytown",
-    "country": "Israel",
-    "houseNumber": 20,
-    "Zip": "12345"
-},
-"image": {
-    "alt": "user-profile",
-    "src": "https://picsum.photos/200/300"
-},
-"phone": "050-8123091",
-"email": "Waine@batcave.com",
-    "isBusiness": true,
-    "password": "Aa!123456"
-}
-
-### delete request
-DELETE http://localhost:8080/api/v1/users/657ecce8e12046ca69ee46b0
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMjgwOTE3Nn0.WONkKzbafBnQ1htutx6lft3XWG38dRKKY5E9OB3LLPw
-
-### update is business
-PATCH http://localhost:8080/api/v1/users/657f1792f9b52a9696a4571b
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlZ0ByZWcuY29tIiwiaWF0IjoxNzAyODI3OTU2fQ.TZCJibLESItO_COVrSlzSXoJOMWKWs4QDYaTmqqsGk4
-content-type: application/json
-
-{
-    "isBusiness": false
-}
-
-
-### get user by id
-GET http://localhost:8080/api/v1/users/65799750af1dafb2c051db7b
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IldhaW5lQGJhdGNhdmUuY29tIiwiaWF0IjoxNzAyODAwNzEzfQ.Lru93t22oCQ6pcotM8dDXXql0essaBZQ4pYQBeXMeAU

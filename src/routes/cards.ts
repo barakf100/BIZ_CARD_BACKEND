@@ -2,12 +2,13 @@ import express from "express";
 import { ICard } from "../@types/card";
 import { Card } from "../database/model/card";
 import { validateCard } from "../middleware/validation";
-import { createCard, findOwnerCards } from "../service/card-service";
+import { createCard, findOwnerCards, likedOrNot } from "../service/card-service";
 import { isBusiness } from "../middleware/is-Business";
 import { getUserByJWT } from "../service/user-service";
 import { isCardOwner } from "../middleware/is-card-owner";
 import { isCardOwnerOrAdmin } from "../middleware/is-card-owner-or-admin";
 import { authIsUser, isUser } from "../middleware/is_user";
+import e from "express";
 
 const router = express.Router();
 
@@ -41,9 +42,9 @@ router.get("/:id", async (req, res) => {
 });
 
 // post new card - business account
-router.post("/:id", isBusiness, validateCard, async (req, res) => {
+router.post("/", isBusiness, validateCard, async (req, res) => {
     try {
-        const newCard = await createCard(req.body as ICard, req.params.id);
+        const newCard = await createCard(req.body as ICard, req.user._id);
         res.status(201).json({ message: "card saved", card: newCard });
     } catch (err) {
         res.status(400).json({ message: "Error saving card", err });
@@ -63,9 +64,14 @@ router.put("/:id", isCardOwner, async (req, res) => {
 });
 
 // like a card - logged in user
-router.patch("/:id", authIsUser, async (req, res) => {
-    const likeCard = await Card.findByIdAndUpdate(req.params.id, { $push: { likes: req.user._id } }, { new: true });
-    res.send(likeCard);
+router.patch("/:id", authIsUser, async (req, res, next) => {
+    try {
+        const success = await likedOrNot(req.params.id, req.user._id.toString());
+        if (success === -1) res.status(200).json({ message: "card liked" });
+        else res.status(200).json({ message: "card disliked" });
+    } catch (err) {
+        next(err);
+    }
 });
 
 // DELETE card - logged in user who created the card or admin
