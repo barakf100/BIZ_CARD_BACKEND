@@ -2,7 +2,7 @@ import { Router } from "express";
 import { ILogin, IUser } from "../@types/user";
 import { User } from "../database/model/user";
 import { validateLogin, validateRegistration } from "../middleware/validation";
-import { createUser, validateUser } from "../service/user-service";
+import { createUser, isValidId, validateUser } from "../service/user-service";
 import { isAdmin } from "../middleware/is-admin";
 import { isAdminOrUser } from "../middleware/is-admin-or-user";
 import { isUser } from "../middleware/is_user";
@@ -45,7 +45,12 @@ router.get("/", isAdmin, async (req, res, next) => {
 // admin get user by id , user get himself
 router.get("/:id", isAdminOrUser, async (req, res, next) => {
     try {
-        const user = (await User.findById(req.params.id).lean()) as IUser;
+        isValidId(req.params.id);
+        const userDoc = await User.findById(req.params.id);
+        if (!userDoc) {
+            throw new BizCardsError("user not found", 401);
+        }
+        const user = userDoc.toObject() as IUser;
         const { password, ...rest } = user;
         res.json({ user: rest });
     } catch (err) {
@@ -84,7 +89,11 @@ router.patch("/:id", isUser, async (req, res, next) => {
 // admin delete any user , user delete himself
 router.delete("/:id", isAdminOrUser, async (req, res, next) => {
     try {
+        isValidId(req.params.id);
         const deleted = await User.findByIdAndDelete(req.params.id);
+        if (!deleted) {
+            throw new BizCardsError("user not found", 400);
+        }
         res.json({ message: "user deleted", deleted });
     } catch (err) {
         next(err);

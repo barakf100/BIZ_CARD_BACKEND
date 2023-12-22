@@ -1,7 +1,8 @@
 import { ErrorRequestHandler } from "express";
 import { BizCardsError } from "../error/biz-cards-error";
 import { promises } from "fs";
-const log = async (errorMessage: any) => {
+import { Logger } from "../logs-message/logger";
+const logs = async (errorMessage: any) => {
     try {
         const date = new Date();
         const path = "./src/log";
@@ -11,12 +12,12 @@ const log = async (errorMessage: any) => {
         error was: ${errorMessage.message} \n`;
         await promises.appendFile(`${path}/${data}.txt`, message);
     } catch (err) {
-        console.log(err);
+        Logger.error("error in file save", err);
     }
 };
 
 const errorHandler: ErrorRequestHandler = async (err, req, res, next) => {
-    log(err);
+    logs(err);
     if (err instanceof BizCardsError) return res.status(err.status).json({ message: err.message });
 
     if (err.code && err.code == 11000 && err.keyPattern && err.keyValue)

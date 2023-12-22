@@ -7,7 +7,8 @@ const validation = (schema: Joi.ObjectSchema, userInput: any) => {
     }
 
     const { message, path } = error.details[0];
-    return { message, path };
+    const customMessage = "from joi " + message;
+    return { customMessage, path };
 };
 
 export default validation;

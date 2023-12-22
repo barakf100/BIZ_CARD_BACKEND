@@ -14,14 +14,18 @@ const extractToken = (req: Request) => {
 
 const isAdmin: RequestHandler = async (req, res, next) => {
     const token = extractToken(req);
-    const { email } = auth.verifyJWT(token);
-
-    const user = await User.findOne({ email });
-    const isAdmin = user?.isAdmin;
-    if (isAdmin) {
-        next();
-    } else {
-        return res.status(401).json({ message: "You are not an admin" });
+    try {
+        const { email } = auth.verifyJWT(token);
+        const user = await User.findOne({ email });
+        if (!user) throw new BizCardsError("user not found", 401);
+        const isAdmin = user?.isAdmin;
+        if (isAdmin) {
+            next();
+        } else {
+            return res.status(401).json({ message: "You are not an admin" });
+        }
+    } catch (err) {
+        next(err);
     }
 };
 

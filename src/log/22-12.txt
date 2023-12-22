@@ -1,0 +1,21 @@
+logged error with status code undefined 
+        at 15:24:21 
+        error was: Cast to ObjectId failed for value "657f1792f9b52a9696a4571" (type string) at path "_id" for model "user" 
+logged error with status code 400 
+        at 15:28:23 
+        error was: invalid id 
+logged error with status code 400 
+        at 15:28:44 
+        error was: invalid id 
+logged error with status code 400 
+        at 15:29:13 
+        error was: token is invalid 
+logged error with status code 400 
+        at 15:29:40 
+        error was: invalid id 
+logged error with status code 401 
+        at 15:30:8 
+        error was: user not found 
+logged error with status code 400 
+        at 15:30:19 
+        error was: user not found 
