@@ -15,8 +15,7 @@ const isUser: RequestHandler = async (req, res, next) => {
         req.user = user;
         if (!user) throw new BizCardsError("user not found", 401);
         if (id == user?._id) return next();
-
-        res.status(401).json({ message: "You are not a user" });
+        throw new BizCardsError("You are not a user", 401);
     } catch (err) {
         next(err);
     }

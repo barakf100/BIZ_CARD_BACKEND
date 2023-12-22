@@ -10,7 +10,7 @@ import { auth } from "../service/auth-service";
 import { BizCardsError } from "../error/biz-cards-error";
 
 const router = Router();
-
+// TODO: check when log get undefined status
 // register new user
 router.post("/", validateRegistration, async (req, res, next) => {
     try {

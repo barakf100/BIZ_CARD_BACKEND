@@ -7,10 +7,10 @@ const logs = async (errorMessage: any) => {
         const date = new Date();
         const path = "./src/log";
         const data = `${date.getDate()}-${date.getMonth() + 1}`;
-        const message = `logged error with status code ${errorMessage.status} 
+        const message = `logged error with status code: ${errorMessage.status}
         at ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} 
         error was: ${errorMessage.message} \n`;
-        await promises.appendFile(`${path}/${data}.txt`, message);
+        await promises.appendFile(`${path}/${data}.log`, message);
     } catch (err) {
         Logger.error("error in file save", err);
     }

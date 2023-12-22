@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "email": "admin@admin.com",
-    "password": "Aa!1234567"
+    "password": "Aa!123456"
 }
 
 ### GET All Users
@@ -13,7 +13,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 
 
 ### get user by id
-GET http://localhost:8080/api/v1/users/657f1792f9b52a9696a4571
+GET http://localhost:8080/api/v1/users/657f1792f9b52a9696a45715
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMjkxOTQyNH0.cZUEzwk6xuuuQgefQtB9Q0SgJm_qMaRYME3pRxBm-Kk
 
 ### put request
