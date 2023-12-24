@@ -2,7 +2,7 @@ import { Router } from "express";
 import { ILogin, IUser } from "../@types/user";
 import { User } from "../database/model/user";
 import { validateLogin, validateRegistration } from "../middleware/validation";
-import { createUser, isValidId, validateUser } from "../service/user-service";
+import { createUser, validateUser } from "../service/user-service";
 import { isAdmin } from "../middleware/is-admin";
 import { isAdminOrUser } from "../middleware/is-admin-or-user";
 import { isUser } from "../middleware/is_user";
@@ -10,7 +10,6 @@ import { auth } from "../service/auth-service";
 import { BizCardsError } from "../error/biz-cards-error";
 
 const router = Router();
-// TODO: check when log get undefined status
 // register new user
 router.post("/", validateRegistration, async (req, res, next) => {
     try {
@@ -45,7 +44,6 @@ router.get("/", isAdmin, async (req, res, next) => {
 // admin get user by id , user get himself
 router.get("/:id", isAdminOrUser, async (req, res, next) => {
     try {
-        isValidId(req.params.id);
         const userDoc = await User.findById(req.params.id);
         if (!userDoc) {
             throw new BizCardsError("user not found", 401);
@@ -89,7 +87,6 @@ router.patch("/:id", isUser, async (req, res, next) => {
 // admin delete any user , user delete himself
 router.delete("/:id", isAdminOrUser, async (req, res, next) => {
     try {
-        isValidId(req.params.id);
         const deleted = await User.findByIdAndDelete(req.params.id);
         if (!deleted) {
             throw new BizCardsError("user not found", 400);

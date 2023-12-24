@@ -3,14 +3,14 @@ GET http://localhost:8080/api/v1/cards
 
 ### get my cards
 GET http://localhost:8080/api/v1/cards/my-cards
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzA2NjIxNH0.zIuISnfLET21ZtR3USM6TL8MgNXXtmA4a6BiWRD3smA
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDM0MjM4OTh9.R6uGNdREsviPCXDZaEuZPMPCgUoskkEnIinq15YWSYk
 
 ### get card by id
-GET http://localhost:8080/api/v1/cards/6582b9628cb2349e6f43cbea
+GET http://localhost:8080/api/v1/cards/6582b9628cb2349e6f43cbe
 
 ### new card
 POST http://localhost:8080/api/v1/cards/
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzA2NjIxNH0.zIuISnfLET21ZtR3USM6TL8MgNXXtmA4a6BiWRD3smA
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDM0MjM4OTh9.R6uGNdREsviPCXDZaEuZPMPCgUoskkEnIinq15YWSYk
 Content-Type: application/json
 
 {
@@ -30,8 +30,8 @@ Content-Type: application/json
 }
 
 ### update card by id
-PUT http://localhost:8080/api/v1/cards/657f256df42b7241576aaff6
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDI5MDQ3MTl9.cBH7NxlJJLE2-wKASuGawakPsWVMb_hf7Ah7TkZ2W-U
+PUT http://localhost:8080/api/v1/cards/65882f680b6f6f98bb940a2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDM0MjM4OTh9.R6uGNdREsviPCXDZaEuZPMPCgUoskkEnIinq15YWSYk
 Content-Type: application/json
 
 {
@@ -51,9 +51,9 @@ Content-Type: application/json
 
 ### like a card
 PATCH http://localhost:8080/api/v1/cards/6582b9628cb2349e6f43cbe5
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzA2NjIxNH0.zIuISnfLET21ZtR3USM6TL8MgNXXtmA4a6BiWRD3smA
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDM0MjM4OTh9.R6uGNdREsviPCXDZaEuZPMPCgUoskkEnIinq15YWSYk
 
 
 ### delete card by id
-DELETE http://localhost:8080/api/v1/cards/
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzA2NjIxNH0.zIuISnfLET21ZtR3USM6TL8MgNXXtmA4a6BiWRD3smA
+DELETE http://localhost:8080/api/v1/cards/6588080a134bfad9baf0901f
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1aXNAYnVpcy5jb20iLCJpYXQiOjE3MDM0MTMwNjJ9.ZrioggyBOPhF1ywYWrG4MhVcVnbxicyFlGyccXscjUM

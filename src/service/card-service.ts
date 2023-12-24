@@ -7,8 +7,10 @@ const createCard = async (cardData: ICard, id: string) => {
     card.userId = id;
     return card.save();
 };
-const findOwnerCards = async (id: string) => {
-    const cards = await Card.find({ userId: id });
+
+// returns all cards created by a user
+const findOwnerCards = async (userId: string) => {
+    const cards = await Card.find({ userId: userId });
     return cards;
 };
 const likedOrNot = async (cardId: string, userId: string) => {

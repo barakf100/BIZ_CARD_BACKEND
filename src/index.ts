@@ -22,7 +22,3 @@ app.use("/api/v1/cards", cardsRouter);
 app.use(errorHandler);
 app.use(notFound);
 app.listen(8080);
-
-// read about next auth
-// react fiber
-//  three.js

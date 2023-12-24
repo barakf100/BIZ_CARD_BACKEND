@@ -22,6 +22,7 @@ const isUser: RequestHandler = async (req, res, next) => {
 };
 const authIsUser: RequestHandler = async (req, res, next) => {
     try {
+        auth.validId(req.params.id);
         const user = await getUserByJWT(req);
         if (!user) throw new BizCardsError("user not found", 401);
         req.user = user;

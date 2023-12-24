@@ -6,6 +6,7 @@ import { extractToken } from "./is-admin";
 
 const isAdminOrUser: RequestHandler = async (req, res, next) => {
     try {
+        auth.validId(req.params.id);
         const token = extractToken(req);
         const { email } = auth.verifyJWT(token);
         const { id } = req.params;

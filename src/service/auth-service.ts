@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { IJWTPayload } from "../@types/user";
 import { BizCardsError } from "../error/biz-cards-error";
+import mongoose from "mongoose";
 const authService = {
     hashPassword: (plainTextPassword: string, rounds = 12) => {
         return bcrypt.hash(plainTextPassword, rounds);
@@ -24,6 +25,12 @@ const authService = {
         } catch (err) {
             throw new BizCardsError("token is invalid", 400);
         }
+    },
+
+    validId: (id: string) => {
+        const valid = mongoose.Types.ObjectId.isValid(id);
+        if (!valid) throw new BizCardsError("id is invalid", 400);
+        return valid;
     },
 };
 export { authService as auth };

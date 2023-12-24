@@ -27,13 +27,8 @@ const validateUser = async (email: string, password: string) => {
 const getUserByJWT = async (req: Request) => {
     const JWT = extractToken(req);
     const { email } = auth.verifyJWT(JWT);
-    const { _id } = await User.findOne({ email });
-    return _id;
+    const user = (await User.findOne({ email }).lean()) as IUser;
+    return user;
 };
 
-const isValidId = (id: string) => {
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        throw new BizCardsError("invalid id", 400);
-    }
-};
-export { createUser, validateUser, getUserByJWT, isValidId };
+export { createUser, validateUser, getUserByJWT };

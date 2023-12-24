@@ -5,16 +5,20 @@ import { User } from "../database/model/user";
 import { extractToken } from "./is-admin";
 
 const isBusiness: RequestHandler = async (req, res, next) => {
-    const token = extractToken(req);
-    const { email } = auth.verifyJWT(token);
+    try {
+        const token = extractToken(req);
+        const { email } = auth.verifyJWT(token);
 
-    const user = await User.findOne({ email });
-    const isBusiness = user?.isBusiness;
-    req.user = user;
-    if (isBusiness) {
-        next();
-    } else {
-        return res.status(401).json({ message: "You are not an business account" });
+        const user = await User.findOne({ email });
+        const isBusiness = user?.isBusiness;
+        req.user = user;
+        if (isBusiness) {
+            next();
+        } else {
+            return res.status(401).json({ message: "You are not an business account" });
+        }
+    } catch (err) {
+        next(err);
     }
 };
 
