@@ -3,20 +3,27 @@
 ## Table of Contents
 
 -   [Installation](#installation)
+-   [About](#about)
 -   [Usage](#usage)
--   [endpoints](#endpoints)
--   [error](#error)
+-   [Endpoints](#endpoints)
+-   [Error](#error)
 
 ## Installation
 
 run the project with: pnpm run
 
+## About
+- when starting the server it will initial the DB with:
+    + 3 user (admin,buis,reg)
+    + 3 example cards 
+- all the objects verification with joi
+- all passwords encrypted with bcrypt js
 ## Usage
 
 ### if using rest then request can look loke this :
     METHOD http://localHost:8080/api/v1/{users or cards}/endpoint
 replace users or card with what you need and add another endpoint if you need 
-+ # endpoints
+# endpoints
 ## users
 #### POST
 + /users - register new user
@@ -44,6 +51,9 @@ replace users or card with what you need and add another endpoint if you need
 + /cards/:id - user like card
 #### DELETE 
 + /cards/:id - user delete his own card or admin delete card
+
+## unknown
+unknown endpoint will throw 404 html page
 
 ## ERROR
 all error from status 400 to 500 will log in the [log](https://github.com/barakf100/BIZ_CARD_BACKEND/tree/main/src/log) folder 
