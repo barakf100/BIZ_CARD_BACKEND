@@ -5,6 +5,7 @@
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [endpoints](#endpoints)
+-   [error](#error)
 
 ## Installation
 
