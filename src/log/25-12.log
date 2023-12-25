@@ -1,0 +1,78 @@
+logged error with status code: 400
+        at 13:28:55 
+        error was: token is missing 
+logged error with status code: 400
+        at 17:10:5 
+        error was: Expected ',' or '}' after property value in JSON at position 395 
+logged error with status code: undefined
+        at 17:10:35 
+        error was: E11000 duplicate key error collection: biz_cards_dev.users index: email_1 dup key: { email: "admin@admin.com" } 
+logged error with status code: 401
+        at 17:11:55 
+        error was: You are not a user 
+logged error with status code: 401
+        at 17:12:3 
+        error was: You are not a user 
+logged error with status code: undefined
+        at 17:12:27 
+        error was: Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: biz_cards_dev.users index: email_1 dup key: { email: "admin1@admin.com" } 
+logged error with status code: 400
+        at 17:13:8 
+        error was: token is invalid 
+logged error with status code: 400
+        at 17:13:14 
+        error was: token is missing 
+logged error with status code: 401
+        at 17:13:19 
+        error was: You are not a user 
+logged error with status code: 401
+        at 17:13:30 
+        error was: You are not a user 
+logged error with status code: 401
+        at 17:13:33 
+        error was: You are not a user 
+logged error with status code: 400
+        at 17:14:27 
+        error was: id is invalid 
+logged error with status code: 400
+        at 17:14:53 
+        error was: token is invalid 
+logged error with status code: 400
+        at 17:14:58 
+        error was: id is invalid 
+logged error with status code: 400
+        at 17:17:38 
+        error was: token is invalid 
+logged error with status code: 400
+        at 17:19:1 
+        error was: id is invalid 
+logged error with status code: 400
+        at 17:19:11 
+        error was: id is invalid 
+logged error with status code: 400
+        at 17:19:50 
+        error was: token is invalid 
+logged error with status code: 400
+        at 17:19:55 
+        error was: token is missing 
+logged error with status code: 400
+        at 17:20:3 
+        error was: id is invalid 
+logged error with status code: 400
+        at 17:20:19 
+        error was: id is invalid 
+logged error with status code: 400
+        at 17:20:33 
+        error was: id is invalid 
+logged error with status code: 400
+        at 17:20:52 
+        error was: token is invalid 
+logged error with status code: 400
+        at 17:21:22 
+        error was: id is invalid 
+logged error with status code: 400
+        at 17:21:26 
+        error was: token is invalid 
+logged error with status code: 400
+        at 17:23:7 
+        error was: card not found 

@@ -16,8 +16,6 @@ const isCardOwnerOrAdmin: RequestHandler = async (req, res, next) => {
         const { email } = auth.verifyJWT(token);
         const user = await User.findOne({ email });
         const isAdmin = user?.isAdmin;
-        console.error("user:", userId._id.toString());
-        console.error("card:", card);
         if (userId._id == card.userId) return next();
         else if (isAdmin) {
             next();

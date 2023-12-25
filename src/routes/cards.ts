@@ -9,6 +9,7 @@ import { isCardOwner } from "../middleware/is-card-owner";
 import { isCardOwnerOrAdmin } from "../middleware/is-card-owner-or-admin";
 import { authIsUser, isUser } from "../middleware/is_user";
 import { BizCardsError } from "../error/biz-cards-error";
+import { auth } from "../service/auth-service";
 
 const router = express.Router();
 
@@ -34,11 +35,16 @@ router.get("/my-cards", async (req, res, next) => {
 });
 
 // GET card by id - everyone
-router.get("/:id", async (req, res) => {
-    const { id } = req.params;
-    const card = await Card.findById(id);
-    if (!card) return res.status(400).json({ message: "card not found" });
-    res.status(200).json(card);
+router.get("/:id", async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        auth.validId(id);
+        const card = await Card.findById(id);
+        if (!card) return res.status(400).json({ message: "card not found" });
+        res.status(200).json(card);
+    } catch (err) {
+        next(err);
+    }
 });
 
 // post new card - business account

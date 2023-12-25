@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import initDB from "./initDB";
-import { error } from "console";
 import chalk from "chalk";
 import { Logger } from "../logs-message/logger";
 
@@ -14,7 +13,7 @@ const connect = async () => {
         }
         // connect to database
         await mongoose.connect(connectionString);
-        console.log(chalk.green("DB connected"));
+        console.log(chalk.green("DB connected successfully !!"));
         // initial database
         await initDB();
     } catch (error) {

@@ -9,22 +9,22 @@ Content-Type: application/json
 
 ### GET All Users
 GET http://localhost:8080/api/v1/users
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzQxMjQxNX0.mpmxNOhXrlzJQog-xqytVQtTLzI-b0Lpo2GhyXZexTI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzUyMTE1N30.4W7A-IR70wezf1WT9MQHrPFnOZPbzP4sYDtniv9pIQI
 
 
 ### get user by id
-GET http://localhost:8080/api/v1/users/657f1792f9b52a9696a4571b
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzQxMjQxNX0.mpmxNOhXrlzJQog-xqytVQtTLzI-b0Lpo2GhyXZexTI
+GET http://localhost:8080/api/v1/users/65899b71b2412b76fdf470db
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzUxNzA1N30.aYa6jr7xDzDYmzEE5oTDnkqqRTyB3BvoHelW5vwxygI
 
 ### put request
 PUT http://localhost:8080/api/v1/users/657f1792f9b52a9696a4570f
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzQxMjQxNX0.mpmxNOhXrlzJQog-xqytVQtTLzI-b0Lpo2GhyXZexTI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzUxNzA1N30.aYa6jr7xDzDYmzEE5oTDnkqqRTyB3BvoHelW5vwxygI
 Content-Type: application/json
 
 {
 "name": {
     "first": "barak",
-    "last": "the-admin"
+    "last": "admin"
 },
 "address": {
     "street": "admin St",
@@ -45,7 +45,7 @@ Content-Type: application/json
 
 ### update is business
 PATCH http://localhost:8080/api/v1/users/657f1792f9b52a9696a4570f
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzQxMjQxNX0.mpmxNOhXrlzJQog-xqytVQtTLzI-b0Lpo2GhyXZexTI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMzUxNzA1N30.aYa6jr7xDzDYmzEE5oTDnkqqRTyB3BvoHelW5vwxygI
 content-type: application/json
 
 {
@@ -53,6 +53,6 @@ content-type: application/json
 }
 
 ### delete request
-DELETE http://localhost:8080/api/v1/users/657f1792f9b52a9696a45714
+DELETE http://localhost:8080/api/v1/users/65899b71b2412b76fdf470db
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcwMjkxOTQyNH0.cZUEzwk6xuuuQgefQtB9Q0SgJm_qMaRYME3pRxBm-Kk
 

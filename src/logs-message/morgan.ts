@@ -8,5 +8,8 @@ morgan.token("status", (req, res) => {
     else if (status >= 200) return chalk.green(status.toString());
     else return status.toString();
 });
-
+morgan.token("method", (req, res) => {
+    const method = req.method;
+    return chalk.underline.bgBlue(method);
+});
 export const morganFormat = ":date[web] - :method:url :status - :response-time ms";

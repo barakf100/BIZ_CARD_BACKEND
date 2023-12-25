@@ -19,10 +19,9 @@ Content-Type: application/json
     "src": "https://picsum.photos/200/300"
 },
 "phone": "050-8123091",
-"email": "admin@admin.com",
+"email": "admin1@admin.com",
     "isBusiness": true,
-    "password": "Aa!123456"
-}
+    "password": "Aa!123456"}
 
 
 

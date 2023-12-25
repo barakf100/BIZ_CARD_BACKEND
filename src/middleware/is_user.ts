@@ -8,6 +8,7 @@ import { getUserByJWT } from "../service/user-service";
 
 const isUser: RequestHandler = async (req, res, next) => {
     try {
+        auth.validId(req.params.id);
         const token = extractToken(req);
         const { email } = auth.verifyJWT(token);
         const { id } = req.params;
