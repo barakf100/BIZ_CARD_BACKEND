@@ -43,3 +43,6 @@ replace users or card with what you need and add another endpoint if you need
 + /cards/:id - user like card
 #### DELETE 
 + /cards/:id - user delete his own card or admin delete card
+
+## ERROR
+all error from status 400 to 500 will log in the [log](https://github.com/barakf100/BIZ_CARD_BACKEND/tree/main/src/log) folder 
